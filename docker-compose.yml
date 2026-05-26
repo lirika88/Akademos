@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  user-service:
+    build: ./services/user-service
+    container_name: akademos-user-service
+    ports:
+      - "5001:5001"
+    environment:
+      - PORT=5001
+    networks:
+      - akademos-net
+
+  notification-service:
+    build: ./services/notification-service
+    container_name: akademos-notification-service
+    ports:
+      - "5002:5002"
+    environment:
+      - PORT=5002
+    networks:
+      - akademos-net
+
+networks:
+  akademos-net:
+    driver: bridge
